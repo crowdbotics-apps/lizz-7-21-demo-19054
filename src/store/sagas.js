@@ -18,8 +18,28 @@ function* dogapi_get_breeds_image_random_readWatcher() {
     dogapi_get_breeds_image_random_readWorker
   )
 }
+function* freedogapi_get_breeds_image_random_readWorker(action) {
+  try {
+    const result = yield call(
+      apiService.freedogapi_get_breeds_image_random_read,
+      action
+    )
+    yield put(actions.freedogapi_get_breeds_image_random_readSucceeded(result))
+  } catch (err) {
+    yield put(actions.freedogapi_get_breeds_image_random_readFailed(err))
+  }
+}
+function* freedogapi_get_breeds_image_random_readWatcher() {
+  yield takeEvery(
+    types.FREEDOGAPI_GET_BREEDS_IMAGE_RANDOM_READ,
+    freedogapi_get_breeds_image_random_readWorker
+  )
+}
 export default function* rootSaga() {
-  const sagas = [dogapi_get_breeds_image_random_readWatcher]
+  const sagas = [
+    dogapi_get_breeds_image_random_readWatcher,
+    freedogapi_get_breeds_image_random_readWatcher
+  ]
   yield all(
     sagas.map(saga =>
       spawn(function*() {

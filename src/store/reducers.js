@@ -7,6 +7,9 @@ export default function apiReducer(state = initialState, action) {
     case types.DOGAPI_GET_BREEDS_IMAGE_RANDOM_READ:
     case types.DOGAPI_GET_BREEDS_IMAGE_RANDOM_READ_SUCCEEDED:
     case types.DOGAPI_GET_BREEDS_IMAGE_RANDOM_READ_FAILED:
+    case types.FREEDOGAPI_GET_BREEDS_IMAGE_RANDOM_READ:
+    case types.FREEDOGAPI_GET_BREEDS_IMAGE_RANDOM_READ_SUCCEEDED:
+    case types.FREEDOGAPI_GET_BREEDS_IMAGE_RANDOM_READ_FAILED:
     default:
       return state
   }
